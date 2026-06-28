@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Booking | Dream Design Eventz</title>
+    <link rel="stylesheet" href="Eventbooking.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <img src="logo masking.png" alt="Dreams Design Eventz Logo" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Eventbooking.html" class="active">Event Booking</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+          <li><a href="Aboutus.html">About us</a></li>
+          <li><a href="Team.html">Team</a></li>
+        </ul>
+        <div class="lang-switch">
+          <a href="Eventbooking.html" title="English"><img src="uk.png" alt="English" /></a>
+          <a href="Eventbooking_fr.html" title="Français"><img src="france.png" alt="Français" /></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="booking-page">
+      <section class="booking-hero">
+        <div>
+          <p class="eyebrow">Reserve your date</p>
+          <h1>Book your event with Dream Design Eventz</h1>
+          <p>
+            Fill out the form below to request an event booking. We will contact
+            you shortly to confirm availability and details.
+          </p>
+        </div>
+      </section>
+
+      <section class="booking-content">
+        <div class="booking-details">
+          <h2>Our event packages</h2>
+          <ul>
+            <li>Classic: planning + coordination</li>
+            <li>Premium: design, décor, and vendor management</li>
+            <li>Elite: full production, entertainment, and on-site support</li>
+          </ul>
+          <p>
+            Choose the package that fits your event and tell us about your
+            vision. We can customize every detail for weddings, parties,
+            conferences, and corporate launches.
+          </p>
+        </div>
+
+        <form class="booking-form" action="booking_event.php" method="post">
+          <label>
+            Full name
+            <input type="text" name="name" placeholder="Your full name" required />
+          </label>
+
+          <label>
+            Email address
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+
+          <label>
+            Phone number
+            <input type="tel" name="phone" placeholder="+230 5...." required />
+          </label>
+
+          <label>
+            Event date
+            <input type="date" name="event_date" required />
+          </label>
+
+          <label>
+            Event type
+            <select name="event_type" required>
+              <option value="">Select an event type</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Launch">Launch</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            Package
+            <select name="package" required>
+              <option value="">Choose a package</option>
+              <option value="Classic">Classic</option>
+              <option value="Premium">Premium</option>
+              <option value="Elite">Elite</option>
+            </select>
+          </label>
+
+          <label>
+            Estimated guests
+            <input type="number" name="guests" min="1" placeholder="Number of guests" required />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" placeholder="Tell us more about your event"></textarea>
+          </label>
+
+          <div id="confirmationMessage" class="confirmation-message" aria-live="polite"></div>
+
+          <button type="submit" class="button">Submit Booking Request</button>
+          <p class="form-note">Your request will be stored and emailed once the booking is confirmed.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Dream Design Eventz © 2026</p>
+    </footer>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get('status');
+        const el = document.getElementById('confirmationMessage');
+
+        if (!el) return;
+
+        if (status === 'success') {
+          el.textContent = 'We received your booking request — we will contact you soon.';
+          el.classList.add('show');
+        } else if (status === 'error') {
+          el.textContent = 'There was a problem saving your booking. Please try again.';
+          el.classList.add('show');
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Dream Design Eventz</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Contact.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="index_fr.html" class="logo">
+          <img src="logo masking.png" alt="Dreams Design Eventz Logo" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index_fr.html">Accueil</a></li>
+          <li><a href="Eventbooking_fr.html">Réservation</a></li>
+          <li><a href="Contact_fr.html" class="active">Contact</a></li>
+          <li><a href="Aboutus_fr.html">À propos</a></li>
+          <li><a href="Team_fr.html">Équipe</a></li>
+        </ul>
+        <div class="lang-switch">
+          <a href="Contact.html" title="English"><img src="uk.png" alt="English" /></a>
+          <a href="Contact_fr.html" title="Français"><img src="france.png" alt="Français" /></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="booking-page">
+      <section class="booking-hero">
+        <p class="eyebrow">Prenez contact</p>
+        <h1>Contactez Dream Design Eventz</h1>
+        <p>
+          Des questions sur nos forfaits ou sur l'organisation de votre événement ?
+          Envoyez-nous un message et nous vous répondrons rapidement.
+        </p>
+      </section>
+
+      <section class="booking-content">
+        <div class="booking-details">
+          <h2>Coordonnées</h2>
+          <p>Email : dreamdesigneventz@gmail.com</p>
+          <p>Téléphone : +230 5826687</p>
+          <p>Adresse : Rose Hill</p>
+          <p>
+            Nous sommes là pour répondre à vos questions et accompagner votre
+            projet d'événement du début à la fin.
+          </p>
+        </div>
+
+        <form class="booking-form" action="contact_handler.php" method="post">
+          <label>
+            Votre nom
+            <input type="text" name="name" placeholder="Entrez votre nom" required />
+          </label>
+          <label>
+            Adresse e-mail
+            <input type="email" name="email" placeholder="vous@exemple.com" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="6" placeholder="Décrivez votre projet"></textarea>
+          </label>
+          <button class="button" type="submit">Envoyer le message</button>
+          <p class="form-note">
+            Nous avons bien reçu votre message — nous vous répondrons par e-mail bientôt.
+          </p>
+        </form>
+
+        <div id="contact-status" class="contact-status" aria-live="polite"></div>
+
+        <script>
+          (function(){
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('status');
+            const el = document.getElementById('contact-status');
+            if (!el) return;
+            if (status === 'success') {
+              el.textContent = 'Nous avons bien reçu votre message — nous vous enverrons un e-mail bientôt.';
+              el.classList.add('success');
+            } else if (status === 'error') {
+              el.textContent = 'Une erreur s’est produite. Veuillez réessayer.';
+              el.classList.add('error');
+            }
+          })();
+        </script>
+      </section>
+    </main>
+
+    <footer>
+      <p>Dream Design Eventz © 2026</p>
+    </footer>
+  </body>
+</html>

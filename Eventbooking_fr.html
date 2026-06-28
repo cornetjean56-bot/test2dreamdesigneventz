@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réservation | Dream Design Eventz</title>
+    <link rel="stylesheet" href="Eventbooking_fr.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="index_fr.html" class="logo">
+          <img src="logo masking.png" alt="Dreams Design Eventz Logo" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index_fr.html">Accueil</a></li>
+          <li><a href="Eventbooking_fr.html" class="active">Réservation</a></li>
+          <li><a href="Contact_fr.html">Contact</a></li>
+          <li><a href="Aboutus_fr.html">À propos</a></li>
+          <li><a href="Team_fr.html">Équipe</a></li>
+        </ul>
+        <div class="lang-switch">
+          <a href="Eventbooking.html" title="English"><img src="uk.png" alt="English" /></a>
+          <a href="Eventbooking_fr.html" title="Français"><img src="france.png" alt="Français" /></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="booking-page">
+      <section class="booking-hero">
+        <div>
+          <p class="eyebrow">Réservez votre date</p>
+          <h1>Réservez votre événement avec Dream Design Eventz</h1>
+          <p>
+            Remplissez le formulaire ci-dessous pour une demande de réservation.
+            Nous vous contacterons rapidement pour confirmer la disponibilité.
+          </p>
+        </div>
+      </section>
+
+      <section class="booking-content">
+        <div class="booking-details">
+          <h2>Nos forfaits événementiels</h2>
+          <ul>
+            <li>Classique : planification et coordination</li>
+            <li>Premium : design, décor et gestion des prestataires</li>
+            <li>Elite : production complète, animation et support sur site</li>
+          </ul>
+          <p>
+            Choisissez le forfait adapté à votre événement et partagez votre vision.
+            Nous personnalisons chaque détail pour mariages, fêtes, séminaires et lancements.
+          </p>
+        </div>
+
+        <form class="booking-form" action="booking_event.php" method="post">
+          <label>
+            Nom complet
+            <input type="text" name="name" placeholder="Votre nom complet" required />
+          </label>
+
+          <label>
+            Adresse e-mail
+            <input type="email" name="email" placeholder="vous@exemple.com" required />
+          </label>
+
+          <label>
+            Numéro de téléphone
+            <input type="tel" name="phone" placeholder="+230 5...." required />
+          </label>
+
+          <label>
+            Date de l'événement
+            <input type="date" name="event_date" required />
+          </label>
+
+          <label>
+            Type d'événement
+            <select name="event_type" required>
+              <option value="">Sélectionnez un type d'événement</option>
+              <option value="Wedding">Mariage</option>
+              <option value="Birthday">Anniversaire</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Launch">Lancement</option>
+              <option value="Other">Autre</option>
+            </select>
+          </label>
+
+          <label>
+            Forfait
+            <select name="package" required>
+              <option value="">Choisissez un forfait</option>
+              <option value="Classic">Classique</option>
+              <option value="Premium">Premium</option>
+              <option value="Elite">Elite</option>
+            </select>
+          </label>
+
+          <label>
+            Invités estimés
+            <input type="number" name="guests" min="1" placeholder="Nombre d'invités" required />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" placeholder="Parlez-nous de votre événement"></textarea>
+          </label>
+
+          <div id="confirmationMessage" class="confirmation-message" aria-live="polite"></div>
+
+          <button type="submit" class="button">Envoyer la demande</button>
+          <p class="form-note">Votre demande sera enregistrée et confirmée par e-mail.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Dream Design Eventz © 2026</p>
+    </footer>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get('status');
+        const el = document.getElementById('confirmationMessage');
+
+        if (!el) return;
+
+        if (status === 'success') {
+          el.textContent = 'Nous avons bien reçu votre demande de réservation — nous vous contacterons bientôt.';
+          el.classList.add('show');
+        } else if (status === 'error') {
+          el.textContent = 'Une erreur est survenue lors de l’enregistrement de votre réservation. Veuillez réessayer.';
+          el.classList.add('show');
+        }
+      })();
+    </script>
+  </body>
+</html>
